@@ -3,8 +3,6 @@ package com.coder.dream.alibaba.ons.consumer;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import java.util.Set;
-
 /**
  * Created by konghang on 2016/11/27.
  */
@@ -12,27 +10,19 @@ import java.util.Set;
 public class ConsumerInitializer {
 
     @Inject
-    private Set<ConsumerProvider> consumerProviders;
+    private ConsumerService consumerService;
 
     /**
      * start
      */
     public void start(){
-        if(consumerProviders != null){
-            for(ConsumerProvider consumerProvider : consumerProviders){
-                consumerProvider.get().start();
-            }
-        }
+        consumerService.start();
     }
 
     /**
      * stop
      */
     public void stop(){
-        if(consumerProviders != null){
-            for(ConsumerProvider consumerProvider : consumerProviders){
-                consumerProvider.get().shutdown();
-            }
-        }
+        consumerService.stop();
     }
 }

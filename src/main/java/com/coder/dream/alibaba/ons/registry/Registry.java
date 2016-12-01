@@ -10,7 +10,7 @@ public interface Registry<T> {
     /**
      * 注册
      *
-     * @param instance
+     * @param key
      */
-    void registry(T instance);
+    void registry(String key, T instance);
 }
